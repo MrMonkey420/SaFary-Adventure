@@ -1,0 +1,39 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "farymapa.tmx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "farymapa.tmx": {
+            "scale": 0.6742487980769231,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 886.1713980123891,
+                "y": 529.4781407371095
+            }
+        },
+        "farymapa.tmx#apatrullando la ciudad": {
+            "scaleInDock": 1
+        },
+        "farymapa.tmx#tilesetfinal": {
+            "scaleInDock": 1
+        }
+    },
+    "last.imagePath": "C:/Users/yahah/Desktop/citm_desvj_project_template-L08/Output/Assets/Maps",
+    "map.height": 33,
+    "map.lastUsedFormat": "tmx",
+    "map.width": 52,
+    "openFiles": [
+        "farymapa.tmx"
+    ],
+    "project": "farymapa.tiled-project",
+    "recentFiles": [
+        "farymapa.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.margin": 1,
+    "tileset.spacing": 1
+}

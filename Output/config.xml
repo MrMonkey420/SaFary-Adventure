@@ -1,0 +1,72 @@
+<config>
+  <app>
+    <title>Game Development Testbed</title>
+    <organization>UPC</organization>
+  </app>
+
+  <renderer>
+    <vsync value="true"/>
+  </renderer>
+
+  <window>
+    <resolution width="1280" height="720" scale="1"/>
+    <fullscreen value="false"/>
+    <borderless value="false"/>
+    <resizable value="false"/>
+    <fullscreen_window value="false"/>
+  </window>
+
+  <audio>
+    <music volume="128"/>
+    <fx volume="128"/>
+  </audio>
+
+  <loguito>
+		<loguito texturepath ="Assets/Textures/loguito.jpg"/>
+        <logofx audiopath = "Assets/Audio/Fx/logofx.wav"/>
+  </loguito>
+	
+  <titulo>
+		<titulowo texturepath ="Assets/Textures/titulowo.jpg"/>
+        <titulomusic audiopath = "Assets/Audio/Music/espanacani.ogg"/>
+  </titulo>
+	
+  <scene>
+	  <player x="300" y="898" texturepath="Assets/Textures/PERSONAJE.png" maxbalas="100"/>
+	  <enemy1 posx="1000" posy="1000" texturepath="Assets/Textures/enemy1prueba.jpg"/>
+	  <enemy2 posx="500" posy="500" texturepath="Assets/Textures/enemy2prueba.jpg"/>
+	  <faryarma1 texturepath ="Assets/Textures/Farynator.png"/>
+	  <faryarma2 texturepath ="Assets/Textures/FarynatorBolteado.png"/>
+	  <balagua texturepath ="Assets/Textures/BALAGUA.png"/>
+	  <asmuerto texturepath ="Assets/Textures/asmuerto.jpg"/>
+	  <lenguado texturepath="Assets/Textures/lenguado.jpg"/>
+	  <apatrullando audiopath="Assets/Audio/Music/apatrullando.mp3"/>
+  </scene>
+
+	<scene2>
+		<Ui_BalasAwa texturepath ="Assets/Textures/Muniagua.png"/>
+		<faryarma1 texturepath ="Assets/Textures/Farynator.png"/>
+		<faryarma2 texturepath ="Assets/Textures/FarynatorBolteado.png"/>
+		<balagua texturepath ="Assets/Textures/BALAGUA.png"/>
+		<asmuerto texturepath ="Assets/Textures/asmuerto.jpg"/>
+		<lenguado texturepath="Assets/Textures/lenguado.jpg"/>
+		<apatrullando audiopath="Assets/Audio/Music/apatrullando.mp3"/>
+		<enemy posx="500" posy="500" texturepath="Assets/Textures/enemy1.jpg"/>
+	</scene2>
+
+	<gameover>
+		<asganado texturepath ="Assets/Textures/win.jpg"/>
+		<asperdido texturepath2 = "Assets/Textures/hola.jpg"/>
+	</gameover>
+
+  <map>
+	  <mapfolder path="Assets/Maps/"/>
+	  <mapfile path="Assets/Maps/farymapa.tmx"/>
+  </map>
+
+  <map2>
+	  <mapfolder path="Assets/Maps/"/>
+	  <mapfile path="Assets/Maps/farymapa.tmx"/>
+  </map2>
+  
+</config>

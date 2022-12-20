@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<save_state>
+	<input />
+	<window />
+	<textures />
+	<audio />
+	<:anonymous />
+	<pathfinding />
+	<loguito />
+	<titulo />
+	<scene>
+		<player x="300" y="898" numbalasAgua="100" />
+	</scene>
+	<scene2 />
+	<:anonymous />
+	<entitymanager />
+	<map />
+	<map2 />
+	<FadeToBlack />
+	<renderer>
+		<camera x="350" y="-298" />
+	</renderer>
+</save_state>
