@@ -9,9 +9,7 @@ Un plataformas basado en el Fary con enemigos (ya veremos) y mapa hecho en tiled
  - WASD - movimiento
  - ESPACIO - Salto
  - F1: nivel 1
- - F2: nivel 2
  - F3: empezar desde el inicio del nivel
- - F4: nada :-)
  - F5: save
  - F6: load
  - F9: ver colliders
