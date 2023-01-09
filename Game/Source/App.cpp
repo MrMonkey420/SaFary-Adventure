@@ -124,12 +124,18 @@ bool App::Awake()
 		}
 	}
 
+
+
 	return ret;
 }
 
 // Called before the first frame
 bool App::Start()
 {
+	timer.Start();
+	startupTime.Start();
+	lastSecFrameTime.Start();
+
 	bool ret = true;
 	ListItem<Module*>* item;
 	item = modules.start;
@@ -147,6 +153,9 @@ bool App::Start()
 		}
 		item = item->next;
 	}
+
+	changeFrameRate = 16;
+	maxFrameDuration = changeFrameRate;
 
 	return ret;
 }
@@ -221,11 +230,43 @@ void App::FinishUpdate()
 {
 	if (loadGameRequested == true) LoadFromFile();
 	if (saveGameRequested == true) SaveToFile();
+
+	float secondsSinceStartup = startupTime.ReadSec();
+
+	if (lastSecFrameTime.ReadMSec() > 1000) {
+		lastSecFrameTime.Start();
+		framesPerSecond = lastSecFrameCount;
+		lastSecFrameCount = 0;
+		averageFps = (averageFps + framesPerSecond) / 2;
+	}
+
+	static char title[256];
+	sprintf_s(title, 256, "--Aventura en el Sa-Fary--	 FPS: %.2f Last sec frames: %i Time since startup: %.3f Frame Count: %I64u ",
+		averageFps, framesPerSecond, secondsSinceStartup, frameCount);
+
+	float delay = float(maxFrameDuration) - frameDuration->ReadMs();
+
+	PerfTimer* delayt = new PerfTimer();
+	delayt->Start();
+	if (maxFrameDuration > 0 && delay > 0)
+	{
+		SDL_Delay(delay + 0.7);
+	}
+
+	win->SetTitle(title);
+
+	maxFrameDuration = changeFrameRate;
 }
 
 // Call modules before each loop iteration
 bool App::PreUpdate()
 {
+	frameCount++;
+	lastSecFrameCount++;
+
+	dt = frameDuration->ReadMs();
+	frameDuration->Start();
+
 	bool ret = true;
 	ListItem<Module*>* item;
 	item = modules.start;

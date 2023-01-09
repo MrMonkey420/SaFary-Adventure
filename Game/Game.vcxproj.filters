@@ -49,9 +49,6 @@
     <ClCompile Include="Source\Pathfinding.cpp">
       <Filter>Cpp files</Filter>
     </ClCompile>
-    <ClCompile Include="PerfTimer.cpp">
-      <Filter>Cpp files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Physics.cpp">
       <Filter>Cpp files</Filter>
     </ClCompile>
@@ -70,17 +67,18 @@
     <ClCompile Include="Source\Textures.cpp">
       <Filter>Cpp files</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>Cpp files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Titulo.cpp">
       <Filter>Cpp files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Window.cpp">
       <Filter>Cpp files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Física\Worms\Physics II - 2D Template\PerfTimer.cpp" />
-    <ClCompile Include="..\..\..\Física\Worms\Physics II - 2D Template\Timer.cpp" />
+    <ClCompile Include="..\..\..\Física\Worms\Physics II - 2D Template\Timer.cpp">
+      <Filter>Cpp files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Física\Worms\Physics II - 2D Template\PerfTimer.cpp">
+      <Filter>Cpp files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -158,9 +156,6 @@
     <ClInclude Include="Source\Pathfinding.h">
       <Filter>Heather files</Filter>
     </ClInclude>
-    <ClInclude Include="PerfTimer.h">
-      <Filter>Heather files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Physics.h">
       <Filter>Heather files</Filter>
     </ClInclude>
@@ -179,9 +174,6 @@
     <ClInclude Include="Source\Textures.h">
       <Filter>Heather files</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>Heather files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Titulo.h">
       <Filter>Heather files</Filter>
     </ClInclude>
@@ -191,8 +183,12 @@
     <ClInclude Include="Source\App.h">
       <Filter>Heather files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Física\Worms\Physics II - 2D Template\PerfTimer.h" />
-    <ClInclude Include="..\..\..\Física\Worms\Physics II - 2D Template\Timer.h" />
+    <ClInclude Include="..\..\..\Física\Worms\Physics II - 2D Template\PerfTimer.h">
+      <Filter>Heather files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Física\Worms\Physics II - 2D Template\Timer.h">
+      <Filter>Heather files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">

@@ -5,7 +5,7 @@
 #include "Defs.h"
 #include "Log.h"
 
-#define VSYNC true
+#define VSYNC false
 
 Render::Render(App* application, bool start_enabled) : Module(application, start_enabled)
 {

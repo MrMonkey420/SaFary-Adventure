@@ -3,6 +3,8 @@
 
 #include "Module.h"
 #include "List.h"
+#include "Timer.h"
+#include "PerfTimer.h"
 
 #include "PugiXml/src/pugixml.hpp"
 
@@ -128,7 +130,7 @@ private:
 	uint frames;
 	float dt = 0.0f;
 
-	/*Timer timer;
+	Timer timer;
 
 	Timer startupTime;
 	Timer frameTime;
@@ -144,7 +146,7 @@ private:
 	uint32 maxFrameDuration = 60;
 	uint32 changeFrameRate;
 
-	PerfTimer* frameDuration;;*/
+	PerfTimer* frameDuration;;
 
 };
 
