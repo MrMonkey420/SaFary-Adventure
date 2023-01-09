@@ -95,6 +95,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Física\Worms\Physics II - 2D Template\PerfTimer.cpp" />
+    <ClCompile Include="..\..\..\Física\Worms\Physics II - 2D Template\Timer.cpp" />
     <ClCompile Include="PerfTimer.cpp" />
     <ClCompile Include="Source\Enemy1.cpp" />
     <ClCompile Include="Source\Enemy2.cpp" />
@@ -119,6 +121,8 @@
     <ClCompile Include="Source\Textures.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClInclude Include="..\..\..\Física\Worms\Physics II - 2D Template\PerfTimer.h" />
+    <ClInclude Include="..\..\..\Física\Worms\Physics II - 2D Template\Timer.h" />
     <ClInclude Include="Defs.h" />
     <ClInclude Include="PerfTimer.h" />
     <ClInclude Include="Source\Animation.h" />

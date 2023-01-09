@@ -79,6 +79,8 @@
     <ClCompile Include="Source\Window.cpp">
       <Filter>Cpp files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Física\Worms\Physics II - 2D Template\PerfTimer.cpp" />
+    <ClCompile Include="..\..\..\Física\Worms\Physics II - 2D Template\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -189,6 +191,8 @@
     <ClInclude Include="Source\App.h">
       <Filter>Heather files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Física\Worms\Physics II - 2D Template\PerfTimer.h" />
+    <ClInclude Include="..\..\..\Física\Worms\Physics II - 2D Template\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">

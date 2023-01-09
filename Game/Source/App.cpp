@@ -17,6 +17,11 @@
 #include "GameOver.h"
 #include "Pathfinding.h"
 
+
+//#include "Timer.h"
+//#include "PerfTimer.h"
+
+
 #include "Defs.h"
 #include "Log.h"
 
@@ -46,6 +51,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	map = new Map(this);
 	map2 = new Map2(this);
 	fadetoblack = new FadeToBlack(this);
+
 
 
 	// Ordered for awake / Start / Update

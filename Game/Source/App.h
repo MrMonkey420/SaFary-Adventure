@@ -121,9 +121,6 @@ private:
 	pugi::xml_document configFile;
 	pugi::xml_node configNode;
 
-	uint frames;
-	float dt;
-
 	// L03: DONE 1: Create control variables to control that the real Load and Save happens at the end of the frame
     bool saveGameRequested;
 	bool loadGameRequested;
@@ -131,7 +128,7 @@ private:
 	uint frames;
 	float dt = 0.0f;
 
-	Timer timer;
+	/*Timer timer;
 
 	Timer startupTime;
 	Timer frameTime;
@@ -147,7 +144,7 @@ private:
 	uint32 maxFrameDuration = 60;
 	uint32 changeFrameRate;
 
-	PerfTimer* frameDuration;;
+	PerfTimer* frameDuration;;*/
 
 };
 
