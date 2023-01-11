@@ -147,7 +147,11 @@ bool Enemy1::Update()
 
 bool Enemy1::CleanUp()
 {
-	app->tex->UnLoad(texture);
+	if (ebody != nullptr) {
+		ebody->body->GetWorld()->DestroyBody(ebody->body);
+		ebody = NULL;
+		app->tex->UnLoad(texture);
+	}
 	return true;
 }
 
@@ -158,6 +162,10 @@ void Enemy1::OnCollision(PhysBody* physA, PhysBody* physB) {
 
 	switch (physB->ctype)
 	{
+	case ColliderType::BALAGUA:
+		LOG("Collision BALAGUAAAAAAAAAA");
+		CleanUp();
+		break;
 	case ColliderType::ITEM:
 		LOG("Collision ITEM");
 		break;
@@ -169,7 +177,6 @@ void Enemy1::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::ASMUERTO:
 		LOG("Collision DEATH");
-
 		break;
 	case ColliderType::LENGUADO:
 		LOG("Collision WIN");

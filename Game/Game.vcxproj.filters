@@ -79,6 +79,9 @@
     <ClCompile Include="Source\Timer.cpp">
       <Filter>Cpp files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\BalasAgua.cpp">
+      <Filter>Cpp files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -184,6 +187,9 @@
       <Filter>Heather files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Timer.h">
+      <Filter>Heather files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BalasAgua.h">
       <Filter>Heather files</Filter>
     </ClInclude>
   </ItemGroup>
