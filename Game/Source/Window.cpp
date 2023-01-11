@@ -37,9 +37,9 @@ bool Window::Awake(pugi::xml_node& config)
 		bool resizable = config.child("resizable").attribute("value").as_bool();
 		bool fullscreen_window = config.child("fullscreen_window").attribute("value").as_bool();
 
-		width = config.child("resolution").attribute("width").as_int(1280);
-		height = config.child("resolution").attribute("height").as_int(720);
-		scale = config.child("resolution").attribute("scale").as_int(1);
+		width = config.child("resolution").attribute("width").as_int(1280); //SUSSY (treure números???)
+		height = config.child("resolution").attribute("height").as_int(720); //SUSSY 
+		scale = config.child("resolution").attribute("scale").as_int(1); //SUSSY 
 
 		if (fullscreen == true) flags |= SDL_WINDOW_FULLSCREEN;
 		if (borderless == true) flags |= SDL_WINDOW_BORDERLESS;

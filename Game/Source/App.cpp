@@ -100,6 +100,8 @@ void App::AddModule(Module* module)
 // Called before render is available
 bool App::Awake()
 {
+	timer = Timer();
+
 	bool ret = false;
 
 	// L01: DONE 3: Load config from XML
@@ -108,6 +110,8 @@ bool App::Awake()
 	if (ret == true)
 	{
 		title = configNode.child("app").child("title").child_value(); // L01: DONE 4: Read the title from the config file
+
+		maxFrameDuration = configNode.child("app").child("frcap").attribute("value").as_int();
 
 		ListItem<Module*>* item;
 		item = modules.start;
@@ -124,7 +128,7 @@ bool App::Awake()
 		}
 	}
 
-
+	LOG("---------------- Time Awake: %f/n", timer.ReadMSec());
 
 	return ret;
 }
