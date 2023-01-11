@@ -73,10 +73,10 @@
     <ClCompile Include="Source\Window.cpp">
       <Filter>Cpp files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Física\Worms\Physics II - 2D Template\Timer.cpp">
+    <ClCompile Include="Source\PerfTimer.cpp">
       <Filter>Cpp files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Física\Worms\Physics II - 2D Template\PerfTimer.cpp">
+    <ClCompile Include="Source\Timer.cpp">
       <Filter>Cpp files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -112,9 +112,6 @@
       <Filter>Heather files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Audio.h">
-      <Filter>Heather files</Filter>
-    </ClInclude>
-    <ClInclude Include="Defs.h">
       <Filter>Heather files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Enemy1.h">
@@ -183,10 +180,10 @@
     <ClInclude Include="Source\App.h">
       <Filter>Heather files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Física\Worms\Physics II - 2D Template\PerfTimer.h">
+    <ClInclude Include="Source\PerfTimer.h">
       <Filter>Heather files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Física\Worms\Physics II - 2D Template\Timer.h">
+    <ClInclude Include="Source\Timer.h">
       <Filter>Heather files</Filter>
     </ClInclude>
   </ItemGroup>
