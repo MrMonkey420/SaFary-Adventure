@@ -132,7 +132,11 @@ bool Enemy2::Update()
 
 bool Enemy2::CleanUp()
 {
-	app->tex->UnLoad(texture);
+	if (ebody != nullptr) {
+		ebody->body->GetWorld()->DestroyBody(ebody->body);
+		ebody = NULL;
+		app->tex->UnLoad(texture);
+	}
 	return true;
 }
 
@@ -143,6 +147,10 @@ void Enemy2::OnCollision(PhysBody* physA, PhysBody* physB) {
 
 	switch (physB->ctype)
 	{
+	case ColliderType::BALAGUA:
+		LOG("Collision BALAGUAAAAAA");
+		CleanUp();
+		break;
 	case ColliderType::ITEM:
 		LOG("Collision ITEM");
 		break;

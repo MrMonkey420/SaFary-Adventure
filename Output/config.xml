@@ -38,7 +38,7 @@
 	  <enemy2 posx="500" posy="500" texturepath="Assets/Textures/enemy2prueba.jpg"/>
 	  <faryarma1 texturepath ="Assets/Textures/Farynator.png"/>
 	  <faryarma2 texturepath ="Assets/Textures/FarynatorBolteado.png"/>
-	  <balagua texturepath ="Assets/Textures/BALAGUA.png"/>
+	  <balasagua texturepath ="Assets/Textures/BALAGUA.png"/>
 	  <asmuerto texturepath ="Assets/Textures/asmuerto.jpg"/>
 	  <lenguado texturepath="Assets/Textures/lenguado.jpg"/>
 	  <apatrullando audiopath="Assets/Audio/Music/apatrullando.mp3"/>
