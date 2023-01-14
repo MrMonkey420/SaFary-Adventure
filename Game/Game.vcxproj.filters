@@ -82,6 +82,12 @@
     <ClCompile Include="Source\BalasAgua.cpp">
       <Filter>Cpp files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GuiManager.cpp">
+      <Filter>Cpp files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GuiButton.cpp">
+      <Filter>Cpp files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -190,6 +196,15 @@
       <Filter>Heather files</Filter>
     </ClInclude>
     <ClInclude Include="Source\BalasAgua.h">
+      <Filter>Heather files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GuiManager.h">
+      <Filter>Heather files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GuiControl.h">
+      <Filter>Heather files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GuiButton.h">
       <Filter>Heather files</Filter>
     </ClInclude>
   </ItemGroup>

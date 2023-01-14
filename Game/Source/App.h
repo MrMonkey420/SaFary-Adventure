@@ -29,6 +29,7 @@ class Physics;
 class PathFinding;
 class Animation;
 class FadeToBlack;
+class GuiManager;
 
 class App
 {
@@ -110,6 +111,7 @@ public:
 	Physics* physics;
 	PathFinding* pathfinding;
 	Animation* animation;
+	GuiManager* guiManager;
 
 private:
 
@@ -128,9 +130,10 @@ private:
 	bool loadGameRequested;
 
 	uint frames;
-	float dt = 0.0f;
+	float dt; // = 0.0f;
 
 	Timer timer;
+	PerfTimer ptimer;
 
 	Timer startupTime;
 	Timer frameTime;

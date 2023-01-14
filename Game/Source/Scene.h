@@ -6,6 +6,7 @@
 #include "Item.h"
 #include "Enemy1.h"
 #include "Enemy2.h"
+#include "GuiButton.h"
 
 
 #define CAMERASPEED 13
@@ -38,6 +39,8 @@ public:
 
 	// Called before quitting
 	bool CleanUp();
+
+	bool OnGuiMouseClickEvent(GuiControl* control);
 
 	bool LoadState(pugi::xml_node&);
 	bool SaveState(pugi::xml_node&);
@@ -101,6 +104,8 @@ private:
 	SDL_Texture* originTex = nullptr;
 	iPoint origin;
 
+	GuiButton* button1;
+	GuiButton* button2;
 };
 
 #endif // __SCENE_H__

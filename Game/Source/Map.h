@@ -110,7 +110,7 @@ public:
 
     bool Awake(pugi::xml_node& conf);
 
-	bool WalkMap(int& width, int& height, uchar** buffer) const;
+	bool WalkMap(int& width, int& height, uchar** buffer) const; //SUSSY12 Create Walkability Map
 
     void Draw();
 
@@ -119,6 +119,25 @@ public:
     bool Load();
 
 	iPoint MapToWorld(int x, int y) const;
+
+	iPoint Map::WorldToMap(int x, int y);
+
+	// BFS/Dijkstra methods not required any more: Using PathFinding class
+/*
+// L09: BFS Pathfinding methods
+void ResetPath();
+void DrawPath();
+bool IsWalkable(int x, int y) const;
+
+// L10: Methods for BFS + Pathfinding and cost function for Dijkstra
+int MovementCost(int x, int y) const;
+void ComputePath(int x, int y);
+
+// Propagation methods
+void PropagateBFS(); //L09
+void PropagateDijkstra(); //L10
+void PropagateAStar(int heuristic); //L11
+*/
 
 private:
 
@@ -148,6 +167,23 @@ private:
     SString mapFileName;
 	SString mapFolder;
     bool mapLoaded;
+
+	// BFS/Dijkstra methods not required any more: Using PathFinding class
+/*
+// L09: BFS Pathfinding variables
+PQueue<iPoint> frontier;
+List<iPoint> visited;
+
+// L09 DONE 4: Define destionation point
+iPoint destination;
+
+// L10: Additional variables
+List<iPoint> breadcrumbs;
+uint costSoFar[COST_MAP_SIZE][COST_MAP_SIZE];
+DynArray<iPoint> path;
+
+SDL_Texture* tileX = nullptr;
+*/
 };
 
 #endif // __MAP_H__

@@ -39,7 +39,7 @@ bool Map::WalkMap(int& width, int& height, uchar** buffer) const
     {
         MapLayer* layer = item->data;
 
-        if (layer->properties.GetProperty("Navigation") == NULL) {
+        if (layer->properties.GetProperty("Navigation") == NULL) { //SUSSY12 && !layer->properties.GetProperty("Navigation")->value
             continue;
         }
 
@@ -58,7 +58,14 @@ bool Map::WalkMap(int& width, int& height, uchar** buffer) const
 
                 if (tileset != NULL)
                 {
-                    map[i] = (tileId - tileset->firstgid) > 0 ? 0 : 1;
+                    //According to the mapType use the ID of the tile to set the walkability value
+                    if (mapData.type == MapTypes::MAPTYPE_ISOMETRIC && tileId == 25) map[i] = 1;
+                    else if (mapData.type == MapTypes::MAPTYPE_ORTHOGONAL && tileId == 50) map[i] = 1;
+                    else map[i] = 0;
+                }
+                else {
+                    //LOG("CreateWalkabilityMap: Invalid tileset found");
+                    map[i] = 0;
                 }
             }
         }
@@ -119,14 +126,49 @@ void Map::Draw()
         mapLayerItem = mapLayerItem->next;
 
     }
+    //Draw the visited tiles SUSSY5
+    //DrawPath();
 }
 
 iPoint Map::MapToWorld(int x, int y) const
 {
     iPoint ret;
 
-    ret.x = x * mapData.tileWidth;
-    ret.y = y * mapData.tileHeight;
+    if (mapData.type == MAPTYPE_ORTHOGONAL)
+    {
+        ret.x = x * mapData.tileWidth;
+        ret.y = y * mapData.tileHeight;
+    }
+    else if (mapData.type == MAPTYPE_ISOMETRIC)
+    {
+        ret.x = (x - y) * (mapData.tileWidth / 2);
+        ret.y = (x + y) * (mapData.tileHeight / 2);
+    }
+
+    return ret;
+}
+
+iPoint Map::WorldToMap(int x, int y)
+{
+    iPoint ret(0, 0);
+
+    if (mapData.type == MAPTYPE_ORTHOGONAL)
+    {
+        ret.x = x / mapData.tileWidth;
+        ret.y = y / mapData.tileHeight;
+    }
+    else if (mapData.type == MAPTYPE_ISOMETRIC)
+    {
+        float halfWidth = mapData.tileWidth * 0.5f;
+        float halfHeight = mapData.tileHeight * 0.5f;
+        ret.x = int((x / halfWidth + y / halfHeight) / 2);
+        ret.y = int((y / halfHeight - x / halfWidth) / 2);
+    }
+    else
+    {
+        LOG("Unknown map type");
+        ret.x = x; ret.y = y;
+    }
 
     return ret;
 }
@@ -326,6 +368,16 @@ bool Map::LoadMap(pugi::xml_node mapFile)
         mapData.tileHeight = map.attribute("tileheight").as_int();
         mapData.tileWidth = map.attribute("tilewidth").as_int();
         mapData.type = MAPTYPE_UNKNOWN;
+
+        mapData.type = MAPTYPE_UNKNOWN;
+        if (strcmp(map.attribute("orientation").as_string(), "isometric") == 0)
+        {
+            mapData.type = MAPTYPE_ISOMETRIC;
+        }
+        if (strcmp(map.attribute("orientation").as_string(), "orthogonal") == 0)
+        {
+            mapData.type = MAPTYPE_ORTHOGONAL;
+        }
     }
 
     return ret;
@@ -405,7 +457,7 @@ bool Map::LoadProperties(pugi::xml_node& node, Properties& properties)
     {
         Properties::Property* p = new Properties::Property();
         p->name = propertieNode.attribute("name").as_string();
-        p->value = propertieNode.attribute("value").as_bool();
+        p->value = propertieNode.attribute("value").as_bool();  // SUSSY6 (!!) I'm assuming that all values are bool !!
 
         properties.list.Add(p);
     }

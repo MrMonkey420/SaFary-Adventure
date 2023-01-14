@@ -54,7 +54,7 @@ bool Player::Start() {
 
 	//initilize textures
 	texture = app->tex->Load(texturePath);
-	TaBala = app->tex->Load("Assets/Textures/BALAGUA.png");
+	TaBala = app->tex->Load("Assets/Textures/BALAGUA.png"); //SUSSY7
 
 	// L07 DONE 5: Add physics to the player - initialize physics body
 	pbody = app->physics->CreateCircle(position.x + 15, position.y + 15, 14, bodyType::DYNAMIC);
@@ -75,6 +75,8 @@ bool Player::Update()
 	/*printf("Camera X: %d, Camera Y: %d\n", app->render->camera.x, app->render->camera.y);
 	printf("Pos X: %d, Pos Y: %d\n", position.x, position.y);
 	printf("Pos X respecto camara: %d\n", position.x + app->render->camera.x);*/
+	int speed = 10;
+	b2Vec2 vel = b2Vec2(0, -GRAVITY_Y); //SUSSY7
 
 	LOG("%d, %d", position.y, app->render->camera.y);
 

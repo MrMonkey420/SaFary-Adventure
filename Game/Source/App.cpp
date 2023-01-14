@@ -16,6 +16,7 @@
 #include "Titulo.h"
 #include "GameOver.h"
 #include "Pathfinding.h"
+#include "GuiManager.h"
 
 
 //#include "Timer.h"
@@ -51,6 +52,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	map = new Map(this);
 	map2 = new Map2(this);
 	fadetoblack = new FadeToBlack(this);
+	guiManager = new GuiManager();
 
 
 
@@ -71,6 +73,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(map);
 	AddModule(map2);
 	AddModule(fadetoblack);
+	AddModule(guiManager);
 	// Render last to swap buffer
 	AddModule(render);
 }
@@ -235,9 +238,15 @@ void App::FinishUpdate()
 	if (loadGameRequested == true) LoadFromFile();
 	if (saveGameRequested == true) SaveToFile();
 
-	//frameCount++;
-
-	float secondsSinceStartup = startupTime.ReadSec();
+	// L13: DONE 4: Now calculate:
+	// Amount of frames since startup
+	frameCount++;
+	// Amount of time since game start (use a low resolution timer)
+	secondsSinceStartup = startupTime.ReadSec();
+	// Amount of ms took the last update
+	dt = frameTime.ReadMSec();
+	// Amount of frames during the last second
+	lastSecFrameCount++;
 
 	if (lastSecFrameTime.ReadMSec() > 1000) {
 		lastSecFrameTime.Start();
@@ -246,18 +255,19 @@ void App::FinishUpdate()
 		averageFps = (averageFps + framesPerSecond) / 2;
 	}
 
-	static char title[256];
-	sprintf_s(title, 256, "--Aventura en el Sa-Fary--	 FPS: %.2f Last sec frames: %i Time since startup: %.3f Frame Count: %I64u ",
-		averageFps, framesPerSecond, secondsSinceStartup, frameCount);
-
-	float delay = float(maxFrameDuration) - frameDuration->ReadMs();
+	float delay = float(maxFrameDuration) - dt;
 
 	PerfTimer* delayt = new PerfTimer();
 	delayt->Start();
 	if (maxFrameDuration > 0 && delay > 0)
 	{
 		SDL_Delay(delay + 0.7);
+		dt = maxFrameDuration;
 	}
+
+	static char title[256];
+	sprintf_s(title, 256, "--Aventura en el Sa-Fary--	 FPS: %.2f Last sec frames: %i Time since startup: %.3f Frame Count: %I64u ",
+		averageFps, framesPerSecond, secondsSinceStartup, frameCount);
 
 	win->SetTitle(title);
 
