@@ -29,7 +29,12 @@ bool Player::Awake() {
 	//texturePath = "Assets/Textures/player/idle1.png";
 
 	//L02: DONE 5: Get Player parameters from XML
-	
+	//position.x = parameters.attribute("x").as_int(); //SUSSY2
+	//position.y = parameters.attribute("y").as_int();
+	//texturePath = parameters.attribute("texturepath").as_string();
+	//maxbalas = parameters.attribute("maxbalas").as_int();
+	//numBalas = parameters.attribute("maxbalas").as_int();
+
 	return true;
 }
 
@@ -109,7 +114,7 @@ bool Player::Update()
 		dir = PARAO;
 	}
 
-	if (pbody != nullptr) {
+	if (pbody != nullptr) { //SUSSY2
 		b2Vec2 vel = pbody->body->GetLinearVelocity();
 		float vX = 0;
 		float vY = 0;

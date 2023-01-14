@@ -4,8 +4,12 @@
 #include "Module.h"
 #include "List.h"
 #include "Point.h"
+//#include "PQueue.h"
+//#include "DynArray.h"
 
 #include "PugiXml\src\pugixml.hpp"
+
+#define COST_MAP_SIZE 25
 
 struct TileSet
 {

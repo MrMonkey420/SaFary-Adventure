@@ -235,6 +235,8 @@ void App::FinishUpdate()
 	if (loadGameRequested == true) LoadFromFile();
 	if (saveGameRequested == true) SaveToFile();
 
+	//frameCount++;
+
 	float secondsSinceStartup = startupTime.ReadSec();
 
 	if (lastSecFrameTime.ReadMSec() > 1000) {

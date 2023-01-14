@@ -71,7 +71,7 @@ public:
 private:
 
 	//L02: DONE 1: Declare player parameters
-	SDL_Texture* texture = nullptr;
+	SDL_Texture* texture = nullptr; //SUSSY2
 	const char* texturePath;
 
 	int remainingJumps;

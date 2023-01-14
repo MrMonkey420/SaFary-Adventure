@@ -65,7 +65,7 @@ public:
 	void SaveGameRequest();
 	bool LoadFromFile();
 	bool SaveToFile() ;
-	pugi::xml_node LoadConfigPro();
+	pugi::xml_node LoadConfigPro(); //SUSSY3 esto no está aquí + no debería ser Load Config?
 
 private:
 

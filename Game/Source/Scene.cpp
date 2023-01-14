@@ -41,6 +41,12 @@ bool Scene::Awake(pugi::xml_node& config)
 		item->parameters = itemNode;
 	}
 
+	//if (config.child("player")) {
+	//	player = (Player*)app->entityManager->CreateEntity(EntityType::PLAYER);
+	//	//player->parameters = config.child("player");
+	//	player->parameters = app->LoadConfigPro().child("scene").child("player");
+	//}
+
 	//pugi::xml_node arma1 = config.child("faryarma1");
 	//faryarma1texpath = arma1.attribute("texturepath").as_string();
 
@@ -88,7 +94,7 @@ bool Scene::Start()
 		Enemisuelos.Add(enemy2);
 	}
 
-	player = (Player*)app->entityManager->CreateEntity(EntityType::PLAYER);
+	player = (Player*)app->entityManager->CreateEntity(EntityType::PLAYER); //SUSSY2 (un poco cambiado y en el Awake)
 	player->parameters = app->LoadConfigPro().child("scene").child("player");
 	app->entityManager->Enable();
 
