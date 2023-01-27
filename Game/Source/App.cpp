@@ -52,7 +52,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	map = new Map(this);
 	map2 = new Map2(this);
 	fadetoblack = new FadeToBlack(this);
-	guiManager = new GuiManager();
+	guiManager = new GuiManager(this, false);
 
 
 
