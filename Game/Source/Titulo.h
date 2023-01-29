@@ -37,6 +37,19 @@ public:
 	SDL_Texture* titulowo=nullptr;
 	const char* titulowotexturePath;
 	int introcancion;
+
+	bool nuevapartida;
+	bool continuar;
+	bool salir;
+
+	bool creditos;
+	SDL_Texture* creditostex;
+
+	GuiButton* botonnuevapartida;
+	GuiButton* botoncontinuar;
+	GuiButton* botonsettings;
+	GuiButton* botoncreditos;
+	GuiButton* botonsalir;
 };
 
 #endif

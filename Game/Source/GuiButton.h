@@ -25,20 +25,20 @@ public:
 	uint audioFxId;
 
 	SDL_Texture* nueva_partida;
-	SDL_Texture* playhover;
-	SDL_Texture* playclick;
-	SDL_Texture* continue_;
-	SDL_Texture* continue_hover;
-	SDL_Texture* continue_click;
-	SDL_Texture* settings;
-	SDL_Texture* settingshover;
-	SDL_Texture* settingsclick;
-	SDL_Texture* credits;
-	SDL_Texture* creditshover;
-	SDL_Texture* creditsclick;
-	SDL_Texture* exit;
-	SDL_Texture* exithover;
-	SDL_Texture* exitclick;
+	SDL_Texture* nuevapartidahover;
+	SDL_Texture* nuevapartidahold;
+	SDL_Texture* continuar;
+	SDL_Texture* continuarhover;
+	SDL_Texture* continuarhold;
+	SDL_Texture* ajustes;
+	SDL_Texture* ajusteshover;
+	SDL_Texture* ajusteshold;
+	SDL_Texture* creditos_;
+	SDL_Texture* creditoshover;
+	SDL_Texture* creditoshold;
+	SDL_Texture* salir_;
+	SDL_Texture* salirhover;
+	SDL_Texture* salirhold;
 		
 };
 

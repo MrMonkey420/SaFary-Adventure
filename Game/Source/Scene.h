@@ -98,10 +98,6 @@ public:
 
 	bool balasrecogidas = false;
 
-	bool nuevapartida;
-	bool continuar;
-	bool salir;
-
 private:
 	SDL_Texture* img;
 	float fadeo = 0.0f;
@@ -115,15 +111,6 @@ private:
 	SDL_Texture* mouseTileTex = nullptr;
 	SDL_Texture* originTex = nullptr;
 	iPoint origin;
-
-	bool creditos;
-	SDL_Texture* creditostex;
-
-	GuiButton* botonnuevapartida;
-	GuiButton* botoncontinuar;
-	GuiButton* botonsettings;
-	GuiButton* botoncreditos;
-	GuiButton* botonsalir;
 
 	int temazo;
 };

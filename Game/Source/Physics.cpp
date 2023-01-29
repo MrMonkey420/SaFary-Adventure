@@ -22,7 +22,7 @@ Physics::Physics(App* application, bool start_enabled) : Module(application, sta
 {
 	// Initialise all the internal class variables, at least to NULL pointer
 	world = NULL;
-	debug = true;
+	debug = false;
 	//CUIDADO FALTAN UN TURBOPUÑAO DE COSAS
 }
 

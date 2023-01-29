@@ -11,6 +11,7 @@
 #include "Loguito.h"
 #include "GameOver.h"
 #include "EntityManager.h"
+#include "GuiManager.h"
 
 #include <stdio.h>
 
@@ -40,6 +41,24 @@ bool Titulo::Awake(pugi::xml_node& config)
 // Load assets
 bool Titulo::Start()
 {
+	creditostex = app->tex->Load("Assets/Textures/nubedepegatina.png");
+	//BUTTONS
+	SDL_Rect playbounds{ 10250,190,129,33 };
+	botonnuevapartida = (GuiButton*)app->guimanager->CreateGuiControl(GuiControlType::BUTTON, 1, "o", playbounds, this);
+	playbounds = { 10190,240,129,33 };
+	botoncontinuar = (GuiButton*)app->guimanager->CreateGuiControl(GuiControlType::BUTTON, 2, "o", playbounds, this);
+	playbounds = { 10190,290,129,33 };
+	botonsettings = (GuiButton*)app->guimanager->CreateGuiControl(GuiControlType::BUTTON, 3, "o", playbounds, this);
+	playbounds = { 10210,340,129,33 };
+	botoncreditos = (GuiButton*)app->guimanager->CreateGuiControl(GuiControlType::BUTTON, 4, "o", playbounds, this);
+	playbounds = { 10250,390,129,33 };
+	botonsalir = (GuiButton*)app->guimanager->CreateGuiControl(GuiControlType::BUTTON, 5, "o", playbounds, this);
+
+	nuevapartida = false;
+	continuar = false;
+	creditos = false;
+	salir = false;
+
 	bool ret = true;
 
 	titulowo = app->tex->Load("Assets/Textures/titulowo.jpg");
@@ -56,6 +75,11 @@ bool Titulo::PreUpdate()
 
 bool Titulo::Update(float dt)
 {
+	botonnuevapartida->Draw(app->render);
+	botoncontinuar->Draw(app->render);
+	botonsettings->Draw(app->render);
+	botoncreditos->Draw(app->render);
+	botonsalir->Draw(app->render);
 	//app->render->Blit(titulowo, 0, 0);
 
 	bool ret = true;
