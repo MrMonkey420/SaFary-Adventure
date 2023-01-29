@@ -1,26 +1,40 @@
-# Aventura en el Sa-Fary - Suspendí Mates
+## Descripción
 
-## Resumen para los fans no tan aférrimos de la saga:
+Juego de plataformas basado en la figura de El Fary.
 
-Un plataformas basado en el Fary con enemigos (ya veremos) y mapa hecho en tiled
+## Key Features
+
+ - Player, mapa y tileset son la cara de el Fary.
+ - Munición recargable y con un indicador.
+ - Enemigos.
+ - Menús interactivos con settings, créditos, play y continue.
+
+## Cómo ganar
+
+LLega al final del recorrido siguiendo las platafromas con cara de Fary.
 
 ## Controles
 
- - WASD - movimiento
- - ESPACIO - Salto
- - F1: nivel 1
- - F3: empezar desde el inicio del nivel
- - F5: save
- - F6: load
- - F9: ver colliders
- - F10: modo Dios
+  - W, A, S, D: Mover el player.
+  - SPACE: Saltar
+  - F1: Muestra colisiones.
+  - F5: Guardar progreso.
+  - F6: Cargar progreso.
+  - B:  Desaparecer todas las balas que hay en el suelo.
+  - Left: Disparar a la izquierda.
+  - Right: Disparar a la derecha.
 
-## Creadores
+## Developers
 
- - Marc Escandell
- - Dani Mañas
+ - Daniel Mañas (Hacienda69)
+ - Marc Escandell (MrMonkey420)
+
+## Github Link
+
+https://github.com/MrMonkey420/SaFary-Adventure
 
 ## License
 
 This project is licensed under an unmodified MIT license, which is an OSI-certified license that allows static linking with closed source software. Check [LICENSE](LICENSE) for further details.
 
+{AdditionalLicenses}
