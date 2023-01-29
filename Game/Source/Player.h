@@ -47,7 +47,7 @@ public:
 public:
 
 	PhysBody* pbody;
-	PhysBody* Abalas[30];
+	PhysBody* Abalas[60];
 
 
 	bool auxUp = false;
@@ -79,7 +79,7 @@ private:
 
 	// L07 DONE 5: Add physics to the player - declare a Physics body
 
-
+	bool balasaux = false;
 
 };
 

@@ -55,7 +55,6 @@ public:
 	List<Enemy2*> Enemisuelos;
 
 public:
-
 	//L02: DONE 3: Declare a Player attribute 
 	Player* player;
 
@@ -77,11 +76,12 @@ public:
 
 	const char* apatrullando; //cancion
 
-
 	SDL_Texture* faryarma1;
 	const char* faryarma1texpath;
 	SDL_Texture* faryarma2;
 	const char* faryarma2texpath;
+
+	SDL_Texture* TexPickupBalas;
 
 	SDL_Texture* TextMuni;
 	const char* MuniTP;
@@ -93,6 +93,10 @@ public:
 
 	bool escena = 0;
 	bool jugando = 0;
+
+	PhysBody* BalasSensor;
+
+	bool balasrecogidas = false;
 
 private:
 	SDL_Texture* img;
@@ -110,6 +114,7 @@ private:
 
 	GuiButton* button1;
 	GuiButton* button2;
+
 };
 
 #endif // __SCENE_H__

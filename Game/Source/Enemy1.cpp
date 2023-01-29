@@ -139,8 +139,8 @@ bool Enemy1::Update()
 	} 
 
 	if (dead == true) {
-		ebody->body->SetActive(false);
-		this->Disable();
+		/*ebody->body->SetActive(false);
+		this->Disable();*/
 	}
 	return true;
 }
@@ -164,7 +164,8 @@ void Enemy1::OnCollision(PhysBody* physA, PhysBody* physB) {
 	{
 	case ColliderType::BALAGUA:
 		LOG("Collision BALAGUAAAAAAAAAA");
-		CleanUp();
+		//CleanUp();
+		dead = true;
 		break;
 	case ColliderType::ITEM:
 		LOG("Collision ITEM");

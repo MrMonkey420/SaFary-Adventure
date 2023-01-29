@@ -122,10 +122,10 @@ bool Enemy2::Update()
 
 	app->render->DrawTexture(texture, position.x, position.y);
 
-	if (dead == true) {
-		ebody->body->SetActive(false);
-		this->Disable();
-	}
+	//if (dead == true) {
+	//	ebody->body->SetActive(false);
+	//	this->Disable();
+	//}
 
 	return true;
 }
@@ -149,7 +149,8 @@ void Enemy2::OnCollision(PhysBody* physA, PhysBody* physB) {
 	{
 	case ColliderType::BALAGUA:
 		LOG("Collision BALAGUAAAAAA");
-		CleanUp();
+		//CleanUp();
+		dead = true;
 		break;
 	case ColliderType::ITEM:
 		LOG("Collision ITEM");

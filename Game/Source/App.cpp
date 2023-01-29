@@ -137,7 +137,9 @@ bool App::Awake()
 	LOG("---------------- Time Awake: %f/n", timer.ReadMSec());
 
 	// changeFrameRate = 16;
-	maxFrameDuration = changeFrameRate;
+	//maxFrameDuration = changeFrameRate;
+
+	changeFrameRate = maxFrameDuration;
 
 	return ret;
 }
@@ -250,9 +252,17 @@ void App::FinishUpdate()
 		averageFps = (averageFps + framesPerSecond) / 2;
 	}
 
+
 	static char title[256];
-	sprintf_s(title, 256, " - Aventura en el Sa-Fary - Av.FPS: %.2f Last sec frames: %i Time since startup: %.3f Frame Count: %I64u ",
-		averageFps, framesPerSecond, secondsSinceStartup, frameCount);
+
+	if (VsEnabled == true) {
+		sprintf_s(title, 256, " - Aventura en el Sa-Fary - Av.FPS: %.2f / FPS: %i / Last sec MS: %.3f / Vsync: On ",
+			averageFps, framesPerSecond, lastSecFrameTime.ReadMSec());
+	}
+	else {
+		sprintf_s(title, 256, " - Aventura en el Sa-Fary - Av.FPS: %.2f / FPS: %i / Last sec MS: %.3f / Vsync: Off ",
+			averageFps, framesPerSecond, lastSecFrameTime.ReadMSec());
+	}
 
 	float delay = float(maxFrameDuration) - frameDuration->ReadMs();
 
@@ -265,20 +275,19 @@ void App::FinishUpdate()
 		extradelay = 0.8f;
 	}
 	else {
-		if (changeFrameRate = 16) {
-			extradelay = -1.01f;
+		if (changeFrameRate == 16) {
+			extradelay = 1;
 		}
 	}
 
 	if (maxFrameDuration > 0 && delay > 0)
 	{
-		printf("delay: %f \n", delay);
+		//printf("delay: %f \n", delay);
 		SDL_Delay(delay + extradelay);
 	}
 
 	win->SetTitle(title);
 
-	maxFrameDuration = changeFrameRate;
 }
 
 // Call modules before each loop iteration

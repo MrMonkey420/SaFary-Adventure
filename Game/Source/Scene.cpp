@@ -15,6 +15,7 @@
 #include "FadeToBlack.h"
 #include "Pathfinding.h"
 #include "GuiManager.h"
+#include "BalasAgua.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -132,6 +133,9 @@ bool Scene::Start()
 	moriste = app->tex->Load("Assets/Textures/asmuerto.jpg");
 	winner = app->tex->Load("Assets/Textures/lenguado.jpg");
 	TextMuni = app->tex->Load("Assets/Textures/Muniagua.png");
+	TexPickupBalas = app->tex->Load("Assets/Textures/PickupBalas.png");
+
+	BalasSensor = app->physics->CreateRectangleSensor(750, 450, 28, 28, STATIC);
 
 	uint w, h;
 	app->win->GetWindowSize(w, h);
@@ -150,7 +154,6 @@ bool Scene::PreUpdate()
 // Called each loop iteration
 bool Scene::Update(float dt)
 {
-
 	if (player->deathbool == true) {
 		app->gameover->ganaste = false;
 		//app->map->Disable();
@@ -392,6 +395,11 @@ bool Scene::Update(float dt)
 	}
 
 	app->render->DrawTexture(TextMuni, player->position.x - 600, player->position.y + 25, &MuniPin);
+
+	if (balasrecogidas == false) {
+		app->render->DrawTexture(TexPickupBalas, 735, 410);
+	}
+
 
 	return true;
 }

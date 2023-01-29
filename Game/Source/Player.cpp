@@ -46,7 +46,7 @@ bool Player::Start() {
 	maxbalas = parameters.attribute("maxbalas").as_int();
 	numBalas = parameters.attribute("maxbalas").as_int();
 
-	for (int i = 0; i < 30; i++) {
+	for (int i = 0; i < 60; i++) {
 		Abalas[i] = NULL;
 	}
 
@@ -149,26 +149,53 @@ bool Player::Update()
 	}
 
 	//BALAS
-	
-	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN && balafuera < 30) {
-		Abalas[30 - balafuera] = app->physics->CreateCircle(position.x + 40, position.y + 10, 5, bodyType::DYNAMIC);
-		Abalas[30 - balafuera]->ctype = ColliderType::BALAGUA;
-		Abalas[30 - balafuera]->body->SetLinearVelocity(b2Vec2(75, 0));
+	if (app->scene->balasrecogidas == true && balasaux == false) {
+		
+		numBalas = parameters.attribute("maxbalas").as_int();
+		totalBalas = 30;
+
+		balasaux = true;
+	}
+
+
+	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN && totalBalas > 0) {
 
 		balafuera++;
+		b2Vec2 pos = b2Vec2(position.x + 40, position.y + 10);
+
+		if (Abalas[60 - balafuera] == NULL) {
+			Abalas[60 - balafuera] = app->physics->CreateCircle(pos.x, pos.y, 5, bodyType::DYNAMIC);
+			Abalas[60 - balafuera]->ctype = ColliderType::BALAGUA;
+		}
+		/*else if(balasaux == true){
+
+			Abalas[30 - balafuera]->body->SetTransform(b2Vec2(0, 0), 0);
+
+		}*/
+
+		//Abalas[30 - balafuera]->body->SetLinearVelocity(b2Vec2(75, 0));
+
 		numBalas--;
 		totalBalas--;
 
 		printf("Balas disparadas: %d \n", balafuera);
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN && balafuera < 30) {
-
-		Abalas[30 - balafuera] = app->physics->CreateCircle(position.x - 35, position.y + 10, 5, bodyType::DYNAMIC);
-		Abalas[30 - balafuera]->ctype = ColliderType::BALAGUA;
-		Abalas[30 - balafuera]->body->SetLinearVelocity(b2Vec2(-75, 0));
+	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN && totalBalas > 0) {
 
 		balafuera++;
+
+		if (Abalas[60 - balafuera] == NULL) {
+			Abalas[60 - balafuera] = app->physics->CreateCircle(position.x - 35, position.y + 10, 5, bodyType::DYNAMIC);
+			Abalas[60 - balafuera]->ctype = ColliderType::BALAGUA;
+		}
+		/*else if(balasaux == true){
+			b2Vec2 pos = b2Vec2(PIXEL_TO_METERS(position.x - 35), PIXEL_TO_METERS(position.y + 10));
+			Abalas[30 - balafuera]->body->SetTransform(pos, 0);
+		}*/
+
+		Abalas[60 - balafuera]->body->SetLinearVelocity(b2Vec2(-75, 0));
+
 		numBalas--;
 		totalBalas--;
 
@@ -177,7 +204,7 @@ bool Player::Update()
 
 	//TEXTURA BALAS
 	b2Vec2 pos;
-	for (int i = 0; i < 30; i++) {
+	for (int i = 59; i >= 0; i--) {
 		if (Abalas[i] != NULL) {
 			pos = b2Vec2(Abalas[i]->body->GetPosition());
 			app->render->DrawTexture(TaBala, METERS_TO_PIXELS(pos.x) - 5, METERS_TO_PIXELS(pos.y) - 5);
@@ -186,9 +213,10 @@ bool Player::Update()
 
 	b2Vec2 locura = b2Vec2(-1000, 1000);
 	if (app->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN) {
-		for (int i = 0; i < totalBalas; i++) {
+		for (int i = 0; i < 60; i++) {
 			if (Abalas[i] != NULL) {
-				Abalas[i]->body->SetTransform(locura, 0.0f);
+				// Abalas[i]->body->SetTransform(locura, 0.0f);
+				Abalas[i] = NULL;
 			}
 		}
 	}
@@ -232,6 +260,10 @@ bool Player::CleanUp()
 void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 
 	// L07 DONE 7: Detect the type of collision
+
+	if (physB == app->scene->BalasSensor && app->scene->balasrecogidas == false) {
+		app->scene->balasrecogidas = true;
+	}
 
 	switch (physB->ctype)
 	{
