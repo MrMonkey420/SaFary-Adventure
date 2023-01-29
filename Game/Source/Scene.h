@@ -94,9 +94,15 @@ public:
 	bool escena = 0;
 	bool jugando = 0;
 
+<<<<<<< Updated upstream
 	PhysBody* BalasSensor;
 
 	bool balasrecogidas = false;
+=======
+	bool nuevapartida;
+	bool continuar;
+	bool salir;
+>>>>>>> Stashed changes
 
 private:
 	SDL_Texture* img;
@@ -112,9 +118,22 @@ private:
 	SDL_Texture* originTex = nullptr;
 	iPoint origin;
 
+<<<<<<< Updated upstream
 	GuiButton* button1;
 	GuiButton* button2;
 
+=======
+	bool creditos;
+	SDL_Texture* creditostex;
+
+	GuiButton* botonnuevapartida;
+	GuiButton* botoncontinuar;
+	GuiButton* botonsettings;
+	GuiButton* botoncreditos;
+	GuiButton* botonsalir;
+
+	int temazo;
+>>>>>>> Stashed changes
 };
 
 #endif // __SCENE_H__

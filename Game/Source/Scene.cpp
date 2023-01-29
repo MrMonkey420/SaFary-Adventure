@@ -81,6 +81,24 @@ bool Scene::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool Scene::Start()
 {
+	creditostex = app->tex->Load("Assets/Textures/nubedepegatina.png");
+	//BUTTONS
+	SDL_Rect playbounds{ 10250,190,129,33 };
+	botonnuevapartida = (GuiButton*)app->guimanager->CreateGuiControl(GuiControlType::BUTTON, 1, "o", playbounds, this);
+	playbounds = { 10190,240,129,33 };
+	botoncontinuar = (GuiButton*)app->guimanager->CreateGuiControl(GuiControlType::BUTTON, 2, "o", playbounds, this);
+	playbounds = { 10190,290,129,33 };
+	botonsettings = (GuiButton*)app->guimanager->CreateGuiControl(GuiControlType::BUTTON, 3, "o", playbounds, this);
+	playbounds = { 10210,340,129,33 };
+	botoncreditos = (GuiButton*)app->guimanager->CreateGuiControl(GuiControlType::BUTTON, 4, "o", playbounds, this);
+	playbounds = { 10250,390,129,33 };
+	botonsalir = (GuiButton*)app->guimanager->CreateGuiControl(GuiControlType::BUTTON, 5, "o", playbounds, this);
+	
+	nuevapartida = false;
+	continuar = false;
+	creditos = false;
+	salir = false;
+
 	for (pugi::xml_node itemNode = app->LoadConfigPro().child("scene").child("enemy1"); itemNode; itemNode = itemNode.next_sibling("enemy1"))
 	{
 		Enemy1* enemy1 = (Enemy1*)app->entityManager->CreateEntity(EntityType::ENEMY1);
@@ -139,8 +157,13 @@ bool Scene::Start()
 
 	uint w, h;
 	app->win->GetWindowSize(w, h);
+<<<<<<< Updated upstream
 	button1 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 1, "Button 1", { (int)w / 2 - 50,(int)h / 2 - 30, 100, 20 }, this);
 	button2 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 2, "Button 2", { (int)w / 2 - 50,(int)h / 2, 100, 20 }, this);
+=======
+	//button1 = (GuiButton*)app->guimanager->CreateGuiControl(GuiControlType::BUTTON, 1, "Button 1", { (int)w / 2 - 50,(int)h / 2 - 30,100,20 }, this);
+	//button2 = (GuiButton*)app->guimanager->CreateGuiControl(GuiControlType::BUTTON, 2, "Button 2", { (int)w / 2 - 50,(int)h / 2,100,20 }, this);
+>>>>>>> Stashed changes
 
 	return true;
 }
@@ -154,6 +177,12 @@ bool Scene::PreUpdate()
 // Called each loop iteration
 bool Scene::Update(float dt)
 {
+	botonnuevapartida->Draw(app->render);
+	botoncontinuar->Draw(app->render);
+	botonsettings->Draw(app->render);
+	botoncreditos->Draw(app->render);
+	botonsalir->Draw(app->render);
+
 	if (player->deathbool == true) {
 		app->gameover->ganaste = false;
 		//app->map->Disable();
@@ -234,7 +263,7 @@ bool Scene::Update(float dt)
 	// Draw map
 	app->map->Draw();
 
-	app->guiManager->Draw();
+	app->guimanager->Draw();
 	//pathfinding
 	ListItem<PhysBody*>* enemyBodyItem = app->map->enemies.start;
 	ListItem<Enemy2*>* Enemy2Item = Enemisuelos.start;

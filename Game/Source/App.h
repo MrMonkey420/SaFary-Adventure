@@ -111,7 +111,7 @@ public:
 	Physics* physics;
 	PathFinding* pathfinding;
 	Animation* animation;
-	GuiManager* guiManager;
+	GuiManager* guimanager;
 
 private:
 

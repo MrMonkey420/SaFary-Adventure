@@ -23,6 +23,23 @@ public:
 	bool drawBasic = false;
 
 	uint audioFxId;
+
+	SDL_Texture* nueva_partida;
+	SDL_Texture* playhover;
+	SDL_Texture* playclick;
+	SDL_Texture* continue_;
+	SDL_Texture* continue_hover;
+	SDL_Texture* continue_click;
+	SDL_Texture* settings;
+	SDL_Texture* settingshover;
+	SDL_Texture* settingsclick;
+	SDL_Texture* credits;
+	SDL_Texture* creditshover;
+	SDL_Texture* creditsclick;
+	SDL_Texture* exit;
+	SDL_Texture* exithover;
+	SDL_Texture* exitclick;
+		
 };
 
 #endif // __GUIBUTTON_H__

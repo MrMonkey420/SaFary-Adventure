@@ -42,6 +42,7 @@
 	  <asmuerto texturepath ="Assets/Textures/asmuerto.jpg"/>
 	  <lenguado texturepath="Assets/Textures/lenguado.jpg"/>
 	  <apatrullando audiopath="Assets/Audio/Music/apatrullando.mp3"/>
+	  <temardo audiopath="Assets/Audio/Music/music_spy.ogg"/>
   </scene>
 
 	<scene2>

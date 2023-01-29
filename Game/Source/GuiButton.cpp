@@ -2,6 +2,7 @@
 #include "Render.h"
 #include "App.h"
 #include "Audio.h"
+#include "Textures.h"
 #include "Log.h"
 
 GuiButton::GuiButton(uint32 id, SDL_Rect bounds, const char* text) : GuiControl(GuiControlType::BUTTON, id)
@@ -13,6 +14,22 @@ GuiButton::GuiButton(uint32 id, SDL_Rect bounds, const char* text) : GuiControl(
 	drawBasic = false;
 
 	audioFxId = app->audio->LoadFx("Assets/Audio/Fx/retro-video-game-coin-pickup-38299.ogg");
+
+	nueva_partida = app->tex->Load("Assets/Textures/ui/nuevapartida.png");
+	playhover = app->tex->Load("Assets/Textures/ui/playhover.png");
+	playclick = app->tex->Load("Assets/Textures/ui/playclick.png");
+	continue_ = app->tex->Load("Assets/Textures/ui/continue.png");
+	continue_hover = app->tex->Load("Assets/Textures/ui/continuehover.png");
+	continue_click = app->tex->Load("Assets/Textures/ui/continueclick.png");
+	settings = app->tex->Load("Assets/Textures/ui/settings.png");
+	settingshover = app->tex->Load("Assets/Textures/ui/settingshover.png");
+	settingsclick = app->tex->Load("Assets/Textures/ui/settingsclick.png");
+	credits = app->tex->Load("Assets/Textures/ui/creditos1.png");
+	creditshover = app->tex->Load("Assets/Textures/ui/creditos2.png");
+	creditsclick = app->tex->Load("Assets/Textures/ui/creditos3.png");
+	exit = app->tex->Load("Assets/Textures/ui/exit.png");
+	exithover = app->tex->Load("Assets/Textures/ui/exithover.png");
+	exitclick = app->tex->Load("Assets/Textures/ui/exitclick.png");
 }
 
 GuiButton::~GuiButton()
