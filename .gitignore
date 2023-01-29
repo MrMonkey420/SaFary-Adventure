@@ -79,3 +79,4 @@ ipch/
 *.db
 *.opendb
 packages/
+Game/Game.vcxproj
