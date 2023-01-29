@@ -23,6 +23,16 @@ LLega al final del recorrido siguiendo las platafromas con cara de Fary.
   - B:  Desaparecer todas las balas que hay en el suelo.
   - Left: Disparar a la izquierda.
   - Right: Disparar a la derecha.
+  - 1: Autowin (sólo en la pantalla de título)
+  - 2: Autolose (sólo en la pantalla de título)
+
+## Comentarios al respecto
+
+  - Pathfinding implementado pero no hemos conseguido que sea funcional hacia el player, 
+    parece ser que el comportamiento de estos se va hacia el punto 0,0
+  - Icono botella de agua se llena y se vacia en relación al número de balas que se tenga
+  - Implementamos double jump
+  - Menú con botones implementado pero no nos aparece por la pantalla de título, está en el código de titulo.cpp
 
 ## Developers
 
