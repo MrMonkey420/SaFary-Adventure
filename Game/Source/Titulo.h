@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Animation.h"
+#include "GuiButton.h"
 
 #include "PugiXml\src\pugixml.hpp"
 

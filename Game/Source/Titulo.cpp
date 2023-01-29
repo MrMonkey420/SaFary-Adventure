@@ -41,6 +41,11 @@ bool Titulo::Awake(pugi::xml_node& config)
 // Load assets
 bool Titulo::Start()
 {
+	bool ret = true;
+
+	titulowo = app->tex->Load("Assets/Textures/titulowo.jpg");
+	//app->audio->PlayMusic("Assets/audio/music/espanacani.ogg", 1.0f);
+	introcancion = app->audio->PlayMusic("Assets/Audio/Music/titulocancion.wav");
 	creditostex = app->tex->Load("Assets/Textures/nubedepegatina.png");
 	//BUTTONS
 	SDL_Rect playbounds{ 10250,190,129,33 };
@@ -58,13 +63,6 @@ bool Titulo::Start()
 	continuar = false;
 	creditos = false;
 	salir = false;
-
-	bool ret = true;
-
-	titulowo = app->tex->Load("Assets/Textures/titulowo.jpg");
-	//app->audio->PlayMusic("Assets/audio/music/espanacani.ogg", 1.0f);
-	introcancion = app->audio->PlayMusic("Assets/Audio/Music/titulocancion.wav");
-
 	return ret;
 }
 
@@ -80,7 +78,8 @@ bool Titulo::Update(float dt)
 	botonsettings->Draw(app->render);
 	botoncreditos->Draw(app->render);
 	botonsalir->Draw(app->render);
-	//app->render->Blit(titulowo, 0, 0);
+	
+	//app->render->Blit(botonnuevapartida, 0, 0);
 
 	bool ret = true;
 
