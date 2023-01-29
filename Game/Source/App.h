@@ -130,7 +130,7 @@ private:
 	bool loadGameRequested;
 
 	uint frames;
-	float dt; // = 0.0f;
+	float dt = 0.0f;
 
 	Timer timer;
 	PerfTimer ptimer;
@@ -150,6 +150,8 @@ private:
 	uint32 changeFrameRate;
 
 	PerfTimer* frameDuration;;
+
+	bool VsEnabled; 
 
 };
 

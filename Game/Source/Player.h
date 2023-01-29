@@ -47,7 +47,7 @@ public:
 public:
 
 	PhysBody* pbody;
-	PhysBody* Abalas[1000];
+	PhysBody* Abalas[30];
 
 
 	bool auxUp = false;
@@ -66,7 +66,7 @@ public:
 	int numBalas;
 	int balafuera = 0;
 	int maxbalas;
-	int totalBalas = 1000;
+	int totalBalas = 30;
 
 private:
 

@@ -48,8 +48,7 @@ bool Scene::Awake(pugi::xml_node& config)
 	//	player->parameters = app->LoadConfigPro().child("scene").child("player");
 	//}
 
-	//pugi::xml_node arma1 = config.child("faryarma1");
-	//faryarma1texpath = arma1.attribute("texturepath").as_string();
+
 
 	//pugi::xml_node arma2 = config.child("faryarma2");
 	//faryarma2texpath = arma2.attribute("texturepath").as_string();
@@ -122,17 +121,22 @@ bool Scene::Start()
 
 	app->render->camera.x = 0;
 
+	//pugi::xml_node Muni = config.child("Ui_BalasAwa");
+	//MuniTP = Muni.attribute("texturepath").as_string();
+	//TextMuni =
+
 	faryarma1 = app->tex->Load("Assets/Textures/Farynator.png");
 	faryarma2 = app->tex->Load("Assets/Textures/FarynatorBolteado.png");
 	logoooo = app->tex->Load("Assets/Textures/loguito.jpg");
 	titula = app->tex->Load("Assets/Textures/titulowo.jpg");
 	moriste = app->tex->Load("Assets/Textures/asmuerto.jpg");
 	winner = app->tex->Load("Assets/Textures/lenguado.jpg");
+	TextMuni = app->tex->Load("Assets/Textures/Muniagua.png");
 
 	uint w, h;
 	app->win->GetWindowSize(w, h);
-	button1 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 1, "Button 1", { (int)w / 2 - 50,(int)h / 2 - 30,100,20 }, this);
-	button2 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 2, "Button 2", { (int)w / 2 - 50,(int)h / 2,100,20 }, this);
+	button1 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 1, "Button 1", { (int)w / 2 - 50,(int)h / 2 - 30, 100, 20 }, this);
+	button2 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 2, "Button 2", { (int)w / 2 - 50,(int)h / 2, 100, 20 }, this);
 
 	return true;
 }
@@ -146,6 +150,7 @@ bool Scene::PreUpdate()
 // Called each loop iteration
 bool Scene::Update(float dt)
 {
+
 	if (player->deathbool == true) {
 		app->gameover->ganaste = false;
 		//app->map->Disable();
@@ -171,6 +176,7 @@ bool Scene::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
 		app->LoadGameRequest();
 
+	//Municion->Draw(MuniTP);
 
 	//MOVER CAMARA (no sirve de nada pq está fijada a player position) SUSSY14
 	//if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
@@ -362,6 +368,30 @@ bool Scene::Update(float dt)
 	iPoint originScreen = app->map->MapToWorld(origin.x, origin.y);
 	app->render->DrawTexture(originTex, originScreen.x, originScreen.y);
 	*/
+
+	if (player->numBalas > 25) {
+		MuniPin = { 0, 0, 34, 75 };
+	}
+	if (player->numBalas > 20 && player->numBalas <= 25) {
+		MuniPin = { 34, 0, 34, 75 };
+	}
+	if (player->numBalas > 15 && player->numBalas <= 20) {
+		MuniPin = { 68, 0, 34, 75 };
+	}
+	if (player->numBalas > 10 && player->numBalas <= 15) {
+		MuniPin = { 102, 0, 34, 75 };
+	}
+	if (player->numBalas > 5 && player->numBalas <= 10) {
+		MuniPin = { 136, 0, 34, 75 };
+	}
+	if (player->numBalas > 0 && player->numBalas <= 5) {
+		MuniPin = { 170, 0, 34, 75 };
+	}
+	if (player->numBalas == 0) {
+		MuniPin = { 204, 0, 34, 75 };
+	}
+
+	app->render->DrawTexture(TextMuni, player->position.x - 600, player->position.y + 25, &MuniPin);
 
 	return true;
 }

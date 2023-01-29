@@ -83,6 +83,10 @@ public:
 	SDL_Texture* faryarma2;
 	const char* faryarma2texpath;
 
+	SDL_Texture* TextMuni;
+	const char* MuniTP;
+	SDL_Rect MuniPin;
+
 	bool level1;
 
 	//bool godMode; //CUIDADO QUITAR

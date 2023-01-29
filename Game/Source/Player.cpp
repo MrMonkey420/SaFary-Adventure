@@ -46,7 +46,7 @@ bool Player::Start() {
 	maxbalas = parameters.attribute("maxbalas").as_int();
 	numBalas = parameters.attribute("maxbalas").as_int();
 
-	for (int i = 0; i < 50; i++) {
+	for (int i = 0; i < 30; i++) {
 		Abalas[i] = NULL;
 	}
 
@@ -72,6 +72,7 @@ bool Player::Start() {
 
 bool Player::Update()
 {
+	
 	/*printf("Camera X: %d, Camera Y: %d\n", app->render->camera.x, app->render->camera.y);
 	printf("Pos X: %d, Pos Y: %d\n", position.x, position.y);
 	printf("Pos X respecto camara: %d\n", position.x + app->render->camera.x);*/
@@ -149,30 +150,34 @@ bool Player::Update()
 
 	//BALAS
 	
-	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT && balafuera < maxbalas) {
-		Abalas[1000 - totalBalas] = app->physics->CreateCircle(position.x + 40, position.y + 10, 5, bodyType::DYNAMIC);
-		Abalas[1000 - totalBalas]->ctype = ColliderType::BALAGUA;
-		Abalas[1000 - totalBalas]->body->SetLinearVelocity(b2Vec2(75, 0));
+	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN && balafuera < 30) {
+		Abalas[30 - balafuera] = app->physics->CreateCircle(position.x + 40, position.y + 10, 5, bodyType::DYNAMIC);
+		Abalas[30 - balafuera]->ctype = ColliderType::BALAGUA;
+		Abalas[30 - balafuera]->body->SetLinearVelocity(b2Vec2(75, 0));
 
+		balafuera++;
 		numBalas--;
 		totalBalas--;
+
+		printf("Balas disparadas: %d \n", balafuera);
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT && balafuera < maxbalas) {
+	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN && balafuera < 30) {
 
-		Abalas[1000 - totalBalas] = app->physics->CreateCircle(position.x - 35, position.y + 10, 5, bodyType::DYNAMIC);
-		Abalas[1000 - totalBalas]->ctype = ColliderType::BALAGUA;
-		Abalas[1000 - totalBalas]->body->SetLinearVelocity(b2Vec2(-75, 0));
+		Abalas[30 - balafuera] = app->physics->CreateCircle(position.x - 35, position.y + 10, 5, bodyType::DYNAMIC);
+		Abalas[30 - balafuera]->ctype = ColliderType::BALAGUA;
+		Abalas[30 - balafuera]->body->SetLinearVelocity(b2Vec2(-75, 0));
 
+		balafuera++;
 		numBalas--;
 		totalBalas--;
-	}
 
-	balafuera = maxbalas - numBalas;
+		printf("Balas disparadas: %d \n", balafuera);
+	}
 
 	//TEXTURA BALAS
 	b2Vec2 pos;
-	for (int i = 0; i < 1000; i++) {
+	for (int i = 0; i < 30; i++) {
 		if (Abalas[i] != NULL) {
 			pos = b2Vec2(Abalas[i]->body->GetPosition());
 			app->render->DrawTexture(TaBala, METERS_TO_PIXELS(pos.x) - 5, METERS_TO_PIXELS(pos.y) - 5);
@@ -189,25 +194,25 @@ bool Player::Update()
 	}
 
 	//DESTRUIR BALAS CUANDO COLISIONAN
-	/*for (int i = 0; i < numBalas; i++) {
-		Abalas[i]->listener->OnCollision(Abalas[i], );
-	}*/
+	//for (int i = 0; i < numBalas; i++) {
+	//	Abalas[i]->listener->OnCollision(Abalas[i], );
+	//}
 
-	/*if (app->physics->destructBala == true) {
+	//if (app->physics->destructBala == true) {
 
-		if (Abalas[numBalas - 1] != NULL) {
-			Abalas[numBalas - 1]->body->SetTransform(locura, 0.0f);
-			app->physics->destructBala = false;
-		}
-	}*/
+	//	if (Abalas[numBalas - 1] != NULL) {
+	//		Abalas[numBalas - 1] = NULL;
+	//		app->physics->destructBala = false;
+	//	}
+	//}
 
 	//RECARGAR BALAS
 	/*if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN) {
 		numBalas = 100; 
 	}*/
 
-	printf("Balas: %d\n", numBalas);
-	printf("Balas disparadas: %d\n", 1000 - totalBalas);
+	//printf("Balas: %d\n", numBalas);
+	//printf("Balas disparadas: %d\n", 1000 - totalBalas);
 
 	return true;
 }

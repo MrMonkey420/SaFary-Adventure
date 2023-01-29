@@ -32,8 +32,6 @@
 // Constructor
 App::App(int argc, char* args[]) : argc(argc), args(args)
 {
-	frames = 0;
-
 	input = new Input(this);
 	win = new Window(this);
 	render = new Render(this);
@@ -103,7 +101,10 @@ void App::AddModule(Module* module)
 // Called before render is available
 bool App::Awake()
 {
-	timer = Timer();
+
+	timer.Start();
+	startupTime.Start();
+	lastSecFrameTime.Start();
 
 	bool ret = false;
 
@@ -115,6 +116,8 @@ bool App::Awake()
 		title = configNode.child("app").child("title").child_value(); // L01: DONE 4: Read the title from the config file
 
 		maxFrameDuration = configNode.child("app").child("frcap").attribute("value").as_int();
+
+		VsEnabled = configNode.child("renderer").child("vsync").attribute("value").as_bool();
 
 		ListItem<Module*>* item;
 		item = modules.start;
@@ -133,15 +136,15 @@ bool App::Awake()
 
 	LOG("---------------- Time Awake: %f/n", timer.ReadMSec());
 
+	// changeFrameRate = 16;
+	maxFrameDuration = changeFrameRate;
+
 	return ret;
 }
 
 // Called before the first frame
 bool App::Start()
 {
-	timer.Start();
-	startupTime.Start();
-	lastSecFrameTime.Start();
 
 	bool ret = true;
 	ListItem<Module*>* item;
@@ -161,15 +164,13 @@ bool App::Start()
 		item = item->next;
 	}
 
-	changeFrameRate = 16;
-	maxFrameDuration = changeFrameRate;
-
 	return ret;
 }
 
 // Called each loop iteration
 bool App::Update()
 {
+
 	bool ret = true;
 	PrepareUpdate();
 
@@ -235,18 +236,12 @@ void App::PrepareUpdate()
 // ---------------------------------------------
 void App::FinishUpdate()
 {
+	VsEnabled = configNode.child("renderer").child("vsync").attribute("value").as_bool();
+
 	if (loadGameRequested == true) LoadFromFile();
 	if (saveGameRequested == true) SaveToFile();
 
-	// L13: DONE 4: Now calculate:
-	// Amount of frames since startup
-	frameCount++;
-	// Amount of time since game start (use a low resolution timer)
-	secondsSinceStartup = startupTime.ReadSec();
-	// Amount of ms took the last update
-	dt = frameTime.ReadMSec();
-	// Amount of frames during the last second
-	lastSecFrameCount++;
+	float secondsSinceStartup = startupTime.ReadSec();
 
 	if (lastSecFrameTime.ReadMSec() > 1000) {
 		lastSecFrameTime.Start();
@@ -255,19 +250,31 @@ void App::FinishUpdate()
 		averageFps = (averageFps + framesPerSecond) / 2;
 	}
 
-	float delay = float(maxFrameDuration) - dt;
+	static char title[256];
+	sprintf_s(title, 256, " - Aventura en el Sa-Fary - Av.FPS: %.2f Last sec frames: %i Time since startup: %.3f Frame Count: %I64u ",
+		averageFps, framesPerSecond, secondsSinceStartup, frameCount);
+
+	float delay = float(maxFrameDuration) - frameDuration->ReadMs();
 
 	PerfTimer* delayt = new PerfTimer();
 	delayt->Start();
-	if (maxFrameDuration > 0 && delay > 0)
-	{
-		SDL_Delay(delay + 0.7);
-		dt = maxFrameDuration;
+
+	float extradelay = 0.0f;
+
+	if (VsEnabled == true) {
+		extradelay = 0.8f;
+	}
+	else {
+		if (changeFrameRate = 16) {
+			extradelay = -1.01f;
+		}
 	}
 
-	static char title[256];
-	sprintf_s(title, 256, "--Aventura en el Sa-Fary--	 FPS: %.2f Last sec frames: %i Time since startup: %.3f Frame Count: %I64u ",
-		averageFps, framesPerSecond, secondsSinceStartup, frameCount);
+	if (maxFrameDuration > 0 && delay > 0)
+	{
+		printf("delay: %f \n", delay);
+		SDL_Delay(delay + extradelay);
+	}
 
 	win->SetTitle(title);
 

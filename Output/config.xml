@@ -33,7 +33,7 @@
   </titulo>
 	
   <scene>
-	  <player x="300" y="898" texturepath="Assets/Textures/PERSONAJE.png" maxbalas="100"/>
+	  <player x="300" y="898" texturepath="Assets/Textures/PERSONAJE.png" maxbalas="30"/>
 	  <enemy1 posx="1000" posy="1000" texturepath="Assets/Textures/enemy1prueba.jpg"/>
 	  <enemy2 posx="500" posy="500" texturepath="Assets/Textures/enemy2prueba.jpg"/>
 	  <faryarma1 texturepath ="Assets/Textures/Farynator.png"/>
